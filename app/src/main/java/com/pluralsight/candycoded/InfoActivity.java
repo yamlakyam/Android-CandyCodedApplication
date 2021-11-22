@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -32,7 +33,6 @@ public class InfoActivity extends AppCompatActivity {
                 load(uri).
                 into(candyStoreImageView);
 
-
     }
 
     public void createMapIntent(View view) {
@@ -43,6 +43,13 @@ public class InfoActivity extends AppCompatActivity {
         if (mapIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(mapIntent);
         }
+    }
+
+    public void createPhoneIntent(View view) {
+        Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
+        Uri phoneUri = Uri.parse("tel:0123456789");
+        phoneIntent.setData(phoneUri);
+        startActivity(phoneIntent);
     }
 
 
